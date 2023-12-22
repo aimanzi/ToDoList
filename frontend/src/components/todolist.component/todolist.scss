@@ -1,0 +1,47 @@
+.main-todolist-container {
+  border: 2px solid black;
+}
+
+.main-todolist-container .task-container {
+  padding: 10px;
+}
+
+.table-con {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.table-con thead tr th {
+  border: 1px solid #3f63ce;
+  padding: 25px;
+  text-align: center;
+  background-color: #aaa7a7;
+}
+
+.table-con tbody tr td {
+  border: 1px solid #3f63ce;
+  text-align: center;
+  background-color: white;
+  height: 50px;
+}
+
+tbody .checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+tbody .checkbox-input {
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox.clicked {
+  width: 30px;
+  height: 30px;
+}
+
+.done {
+  color: green;
+  text-decoration: line-through;
+}
+

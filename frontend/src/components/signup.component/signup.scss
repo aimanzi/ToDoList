@@ -1,0 +1,49 @@
+.main-signup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid black;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  position: absolute;
+  top: 12%;
+  left: 35%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background-image: linear-gradient(to right, violet, indigo);
+}
+
+.signinInput-container .input-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.signinInput-container .input-con input {
+  padding: 10px;
+}
+
+.main-signup-container .buttons-container {
+  margin-top: 20px;
+  border: 1px solid blueviolet;
+}
+
+.buttons-container .button {
+  border: 1px solid blueviolet;
+  width: 80px;
+  height: 35px;
+  font-weight: bold;
+}
+
+.buttons-container .button:hover {
+  background-color: rgb(184, 138, 227);
+}
+
+.button .linkto {
+  text-decoration: none;
+  color: black;
+}
