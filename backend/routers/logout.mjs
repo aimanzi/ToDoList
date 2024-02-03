@@ -6,11 +6,11 @@ logout.use(cors());
 logout.use(express.json());
 
 logout.post("/logout", (req, res) => {
-  console.log("disconnect from server");
+  console.log("disconnect from MongoosDB server");
   DisConnect.ConnectToMD.DisConnect();
   res.json({
     disconnect_status: true,
-    message: "disconnect from server succsess",
+    message: "disconnect from MongoosDB server succsess",
   });
 });
 

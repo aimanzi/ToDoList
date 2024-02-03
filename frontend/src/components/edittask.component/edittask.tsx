@@ -1,9 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import "./edittask.scss";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 const EditTask: React.FC = () => {
+  const [msg, setMsg] = useState<string>("");
   const location = useLocation();
   const index = location.state?.data || null;
   const navigate = useNavigate();
@@ -26,8 +27,6 @@ const EditTask: React.FC = () => {
 
   const editTask = () => {
     let taskData = {
-      userid,
-      index,
       taskDescription: new_TaskDescription.current.value,
       startDate: new_startDate.current.value,
       endDate: new_endDate.current.value,
@@ -49,6 +48,7 @@ const EditTask: React.FC = () => {
         .then((data) => {
           console.log(data);
           if (data.editing_status) {
+            setMsg(data.message);
           }
         })
         .catch((error) => console.log(error));
@@ -94,6 +94,9 @@ const EditTask: React.FC = () => {
         <button type="button" onClick={BackToDoList}>
           Back
         </button>
+      </div>
+      <div style={{ marginTop: "15px" }}>
+        <strong>{msg}</strong>
       </div>
     </div>
   );

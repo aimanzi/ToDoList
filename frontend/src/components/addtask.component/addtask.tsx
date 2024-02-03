@@ -1,20 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import "./addtask.scss";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addtask } from "../redux/taskdata.mjs";
+import { useSelector } from "react-redux";
 
 const AddTask: React.FC = () => {
   const [taskDescription, setTaskDescription] = useState<string>("");
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
+  const [msg, setMsg] = useState<string>("");
 
   const userInfo = useSelector(
     (state: any) => state.AllReducers.userdata.userdata
   );
 
   const navigate = useNavigate();
-  const dispath = useDispatch();
 
   const BackToDoList = () => {
     navigate("/toDoList");
@@ -22,7 +21,7 @@ const AddTask: React.FC = () => {
 
   const addTask = () => {
     if (taskDescription === "" || startDate === "" || endDate === "") {
-      alert("data is missing");
+      setMsg("Task Data Is Missing");
     } else {
       let taskData = {
         firstname: userInfo.firstname,
@@ -50,6 +49,7 @@ const AddTask: React.FC = () => {
           .then((data) => {
             console.log(data);
             if (data.adding_status) {
+              setMsg(data.message);
               ClearInputs();
             }
           })
@@ -63,6 +63,7 @@ const AddTask: React.FC = () => {
     setTaskDescription("");
     setStartDate("");
     setEndDate("");
+    setMsg("");
   };
 
   return (
@@ -100,6 +101,9 @@ const AddTask: React.FC = () => {
         <button type="button" onClick={BackToDoList}>
           Back
         </button>
+      </div>
+      <div style={{ marginTop: "15px" }}>
+        <strong>{msg}</strong>
       </div>
     </div>
   );

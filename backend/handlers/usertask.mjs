@@ -21,6 +21,7 @@ function AddTask(req, res) {
   console.log("posting from user task");
   const userTask = usertaskShema;
   const taskData = req.body;
+  console.log(taskData);
   const userid = taskData.userid;
   const newTask = taskData.task;
 
@@ -74,10 +75,12 @@ function EditTask(req, res) {
   const userid = taskData.userid;
   const taskIndex = taskData.index;
   const taskUpdate = {
-    taskDescription: taskData.taskDescription,
-    startDate: taskData.startDate,
-    endDate: taskData.endDate,
+    taskDescription: taskData.taskData.taskDescription,
+    startDate: taskData.taskData.startDate,
+    endDate: taskData.taskData.endDate,
   };
+
+  console.log(taskUpdate);
   userTask.findOne({ userid }).then((result) => {
     if (result) {
       result.task.splice(taskIndex, 1);

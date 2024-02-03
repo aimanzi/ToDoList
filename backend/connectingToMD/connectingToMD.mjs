@@ -7,7 +7,7 @@ class ConnectToMD {
     await mongoose
       .connect(url)
       .then(() => {
-        console.log("Connected to MongoDB");
+        console.log("Connected to MongoDB Success");
       })
       .catch((error) => {
         console.error("MongoDB connection error:", error);

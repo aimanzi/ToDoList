@@ -9,8 +9,6 @@ const ToDoListHeader: React.FC = () => {
   );
 
   const LogOut = () => {
-    console.log("hi");
-
     const Postdata = {
       method: "POST",
       headers: {
@@ -23,9 +21,7 @@ const ToDoListHeader: React.FC = () => {
     const fetching = async () => {
       await fetch("http://localhost:5000/logout", Postdata)
         .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        })
+        .then((data) => {})
         .catch((error) => console.log(error));
     };
     fetching();

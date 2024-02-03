@@ -1,6 +1,6 @@
 import ToDoListHeader from "../todolist-header.component/tosolistheader";
 import { Button, ButtonGroup } from "react-bootstrap";
-import { Trash, PencilFill, Calendar2, Save2Fill } from "react-bootstrap-icons";
+import { Trash, PencilFill, Calendar2 } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -150,11 +150,6 @@ const ToDoList: React.FC = () => {
                       </Button>
                       <Button onClick={() => deleteItem(index)}>
                         <Trash style={{ height: "25px", width: "25px" }} />
-                      </Button>
-                      <Button>
-                        <Save2Fill
-                          style={{ height: "25px", width: "25px" }}
-                        ></Save2Fill>
                       </Button>
                     </ButtonGroup>
                   </td>
