@@ -1,7 +1,7 @@
 import usertaskShema from "../models/task.mjs";
 
 function DisplayTask(req, res) {
-  console.log("Get from user task");
+  console.log("Get from display user task");
   const userTask = usertaskShema;
   const userid = req.body;
   userTask
@@ -21,7 +21,6 @@ function AddTask(req, res) {
   console.log("posting from user task");
   const userTask = usertaskShema;
   const taskData = req.body;
-  console.log(taskData);
   const userid = taskData.userid;
   const newTask = taskData.task;
 
@@ -54,7 +53,6 @@ function DeleteTask(req, res) {
   const userTask = usertaskShema;
   const userid = req.body.userid;
   const taskIndexToDelete = req.body.index;
-
   userTask.findOne({ userid }).then((result) => {
     if (result) {
       result.task.splice(taskIndexToDelete, 1);

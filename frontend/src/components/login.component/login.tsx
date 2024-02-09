@@ -4,6 +4,7 @@ import "./login.scss";
 import { adduser } from "../redux/userdata.mjs";
 import { useDispatch } from "react-redux";
 import { BoxArrowInRight, PeopleFill } from "react-bootstrap-icons";
+import { userSelect } from "../redux/userOption.mjs";
 
 const LogIn: React.FC = () => {
   const [username, setUserName] = useState<string>("");
@@ -11,7 +12,10 @@ const LogIn: React.FC = () => {
   const [loginerror, setLoginError] = useState<string>("");
 
   const navigate = useNavigate();
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
+  const BackTo = () => {
+    dispatch(userSelect(""));
+  };
 
   const LoginTo = () => {
     if (username === "" && password === "") {
@@ -41,7 +45,7 @@ const LogIn: React.FC = () => {
               .then((response) => response.json())
               .then((data) => {
                 if (data.login_status) {
-                  dispach(adduser(data.userdata));
+                  dispatch(adduser(data.userdata));
                   navigate("/toDoList");
                   ClearInputs();
                 } else {
@@ -66,7 +70,7 @@ const LogIn: React.FC = () => {
       <div className="loginInput-container">
         <div className="input-con">
           <PeopleFill />
-          <label>User Name :</label>
+          <label>User Name : </label>
           <input
             type="email"
             required
@@ -79,7 +83,7 @@ const LogIn: React.FC = () => {
         </div>
         <div className="input-con">
           <BoxArrowInRight />
-          <label>Password :</label>
+          <label>Password : </label>
           <input
             type="password"
             required
@@ -98,10 +102,10 @@ const LogIn: React.FC = () => {
           </button>
         </div>
         <div className="button-con">
-          <button type="button" className="button">
-            <Link to={"/"} className="linkto">
-              Back
-            </Link>
+          <button type="button" className="button" onClick={BackTo}>
+            {/* <Link to={"/"} className="linkto"> */}
+            Back
+            {/* </Link> */}
           </button>
         </div>
       </div>

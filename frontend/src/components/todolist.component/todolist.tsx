@@ -1,9 +1,14 @@
 import ToDoListHeader from "../todolist-header.component/tosolistheader";
 import { Button, ButtonGroup } from "react-bootstrap";
-import { Trash, PencilFill, Calendar2 } from "react-bootstrap-icons";
+import {
+  Trash,
+  PencilFill,
+  Plus,
+  Calendar2EventFill,
+} from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addtask } from "../redux/taskdata.mjs";
 import "./todolist.scss";
 
@@ -106,6 +111,9 @@ const ToDoList: React.FC = () => {
     }
   };
 
+  const AddTask = () => {
+    navigate("/addtask");
+  };
   return (
     <div className="main-todolist-container">
       <div>
@@ -117,10 +125,11 @@ const ToDoList: React.FC = () => {
             <tr>
               <th>Task Description</th>
               <th>
-                <Calendar2 /> Start Date
+                <Calendar2EventFill />
+                Start Date
               </th>
               <th>
-                <Calendar2 />
+                <Calendar2EventFill />
                 End Data
               </th>
               <th>Status</th>
@@ -158,6 +167,12 @@ const ToDoList: React.FC = () => {
             })}
           </tbody>
         </table>
+      </div>
+      <div className="addtask-con">
+        <button onClick={AddTask}>
+          <Plus style={{ height: "25px", width: "25px" }} />
+          New Task
+        </button>
       </div>
     </div>
   );

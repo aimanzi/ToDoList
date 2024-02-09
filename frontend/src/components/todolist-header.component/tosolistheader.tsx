@@ -1,14 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ToDOListImg from "../../assets/images/OIP.jpg";
 import "./tosolistheader .scss";
 import { Link } from "react-router-dom";
+import { userSelect } from "../redux/userOption.mjs";
 
 const ToDoListHeader: React.FC = () => {
   const usedata = useSelector(
     (state: any) => state.AllReducers.userdata.userdata
   );
 
+  const dispatch = useDispatch();
+
   const LogOut = () => {
+    dispatch(userSelect(""));
     const Postdata = {
       method: "POST",
       headers: {
@@ -39,11 +43,11 @@ const ToDoListHeader: React.FC = () => {
       </div>
       <div className="links-container">
         <ul className="list-item">
-          <li className="linkto">
+          {/* <li className="linkto">
             <Link to={"/addtask"} className="link">
               Add Task
             </Link>
-          </li>
+          </li> */}
           <li className="linkto">
             <Link to={"/"} className="link" onClick={LogOut}>
               Logout

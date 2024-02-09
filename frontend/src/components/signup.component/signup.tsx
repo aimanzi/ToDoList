@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./signup.scss";
+import { useDispatch } from "react-redux";
+import { userSelect } from "../redux/userOption.mjs";
 
 const SignUp: React.FC = () => {
   const [fname, setFname] = useState<string>("");
@@ -10,6 +12,11 @@ const SignUp: React.FC = () => {
   const [repassword, setRePassword] = useState("");
   const [passworerror, setPasswordError] = useState<string>("");
   const [mailerror, setMailError] = useState<string>("");
+
+  const dispatch = useDispatch();
+  const BackTo = () => {
+    dispatch(userSelect(""));
+  };
 
   const SignUpValidation = () => {
     const emailRegex = new RegExp(
@@ -73,7 +80,7 @@ const SignUp: React.FC = () => {
     <div className="main-signup-container">
       <div className="signinInput-container">
         <div className="input-con">
-          <label>First Name : </label>
+          <label>First Name :  </label>
           <input
             type="text"
             value={fname}
@@ -132,10 +139,10 @@ const SignUp: React.FC = () => {
         <button type="button" className="button" onClick={SignUpValidation}>
           Submit
         </button>
-        <button type="button" className="button">
-          <Link to={"/"} className="linkto">
-            Back
-          </Link>
+        <button type="button" onClick={BackTo} className="button">
+          {/* <Link to={"/"} className="linkto"> */}
+          Back
+          {/* </Link> */}
         </button>
       </div>
       <div>
