@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./signup.scss";
 import { useDispatch } from "react-redux";
 import { userSelect } from "../redux/userOption.mjs";
@@ -80,7 +79,7 @@ const SignUp: React.FC = () => {
     <div className="main-signup-container">
       <div className="signinInput-container">
         <div className="input-con">
-          <label>First Name :  </label>
+          <label>First Name : </label>
           <input
             type="text"
             value={fname}

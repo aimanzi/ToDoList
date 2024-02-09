@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./login.scss";
 import { adduser } from "../redux/userdata.mjs";
 import { useDispatch } from "react-redux";

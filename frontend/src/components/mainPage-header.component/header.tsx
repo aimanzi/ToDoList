@@ -1,5 +1,5 @@
 import "./header.scss";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import HeaderImg from "../../assets/images/OIP.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ButtonGroup } from "react-bootstrap";
@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { userSelect } from "../redux/userOption.mjs";
 
 const Header: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const ConnectingToMD = (status: string) => {
