@@ -3,13 +3,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border: 2px solid white;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 30px;
   z-index: 1111;
-  // position: absolute;
-  // top: 12%;
-  // left: 35%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -32,23 +30,6 @@
   width: 200px;
 }
 
-.main-signup-container .buttons-container {
-  margin-top: 20px;
-  border: none;
-}
-
-.buttons-container .button {
-  border: 1px solid rgb(43, 125, 226);
-  width: 80px;
-  height: 35px;
-  font-weight: bold;
-}
-
-.buttons-container .button:hover {
-  background-color: rgb(43, 131, 226);
-}
-
-.button .linkto {
-  text-decoration: none;
-  color: black;
+.main-signup-container .btn-group {
+  margin-top: 10px;
 }

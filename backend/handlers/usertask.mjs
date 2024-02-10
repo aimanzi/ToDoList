@@ -6,6 +6,7 @@ function DisplayTask(req, res) {
   const userid = req.body;
   userTask
     .find(userid)
+    .sort({ createdAt: 1 })
     .then((result) => {
       console.log("Task Download Completed");
       res.json({
@@ -78,7 +79,6 @@ function EditTask(req, res) {
     endDate: taskData.taskData.endDate,
   };
 
-  console.log(taskUpdate);
   userTask.findOne({ userid }).then((result) => {
     if (result) {
       result.task.splice(taskIndex, 1);

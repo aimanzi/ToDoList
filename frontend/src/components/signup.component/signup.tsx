@@ -134,14 +134,16 @@ const SignUp: React.FC = () => {
           />
         </div>
       </div>
-      <div className="buttons-container">
-        <button type="button" className="button" onClick={SignUpValidation}>
+      <div className="btn-group">
+        <button
+          type="button"
+          className="btn btn-info"
+          onClick={SignUpValidation}
+        >
           Submit
         </button>
-        <button type="button" onClick={BackTo} className="button">
-          {/* <Link to={"/"} className="linkto"> */}
+        <button type="button" className="btn btn-info" onClick={BackTo}>
           Back
-          {/* </Link> */}
         </button>
       </div>
       <div>

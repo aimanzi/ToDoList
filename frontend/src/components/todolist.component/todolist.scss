@@ -14,7 +14,7 @@
 
 .table-con thead tr th {
   border: 1px solid #3f63ce;
-  padding: 25px;
+  padding: 15px;
   text-align: center;
   background-color: #aaa7a7;
 }
@@ -47,8 +47,8 @@ tbody .checkbox-input {
 }
 
 .addtask-con button {
-  width: 120px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   margin: 15px;
   border: none;
@@ -56,14 +56,17 @@ tbody .checkbox-input {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  background-image: linear-gradient(
-    to right,
-    rgb(130, 207, 238),
-    rgb(0, 65, 130)
-  );
-
   position: relative;
   left: 85%;
   font-weight: bold;
   font-family: cursive;
+  font-size: small;
+}
+
+.addtask-con:hover {
+  cursor: auto;
+}
+
+.addtask-con label {
+  font-size: small;
 }

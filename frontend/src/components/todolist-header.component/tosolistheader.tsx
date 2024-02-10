@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import ToDOListImg from "../../assets/images/OIP.jpg";
 import "./tosolistheader .scss";
-import { Link } from "react-router-dom";
 import { userSelect } from "../redux/userOption.mjs";
+import { useNavigate } from "react-router-dom";
 
 const ToDoListHeader: React.FC = () => {
   const usedata = useSelector(
@@ -10,9 +10,11 @@ const ToDoListHeader: React.FC = () => {
   );
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const LogOut = () => {
     dispatch(userSelect(""));
+    navigate("/");
     const Postdata = {
       method: "POST",
       headers: {
@@ -36,24 +38,12 @@ const ToDoListHeader: React.FC = () => {
         <img src={ToDOListImg} alt="tdlimg" />
       </div>
       <div>
-        <h2>Hello {usedata.firstname + " " + usedata.lastname}</h2>
+        <h3>Hello {usedata.firstname + " " + usedata.lastname}</h3>
       </div>
-      <div>
-        <h1>List To Do</h1>
-      </div>
-      <div className="links-container">
-        <ul className="list-item">
-          {/* <li className="linkto">
-            <Link to={"/addtask"} className="link">
-              Add Task
-            </Link>
-          </li> */}
-          <li className="linkto">
-            <Link to={"/"} className="link" onClick={LogOut}>
-              Logout
-            </Link>
-          </li>
-        </ul>
+      <div className="btn-group">
+        <button className="btn btn-outline-danger" onClick={LogOut}>
+          Logout
+        </button>
       </div>
     </div>
   );

@@ -9,9 +9,6 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  //position: absolute;
-  //top: 20%;
-  //left: 35%;
   background-image: linear-gradient(
     to right,
     rgb(130, 207, 238),
@@ -39,29 +36,4 @@
   width: 200px;
 }
 
-.login-container .login-buttons-container {
-  margin-top: 20px;
-}
 
-.login-buttons-container {
-  display: flex;
-  align-items: center;
-}
-
-.login-buttons-container .button {
-  border: 1px solid rgb(43, 125, 226);
-  width: 80px;
-  height: 35px;
-  font-weight: bold;
-  width: 80px;
-  font-weight: bold;
-}
-
-.login-buttons-container .button:hover {
-  background-color: rgb(43, 131, 226);
-}
-
-.linkto {
-  text-decoration: none;
-  color: black;
-}

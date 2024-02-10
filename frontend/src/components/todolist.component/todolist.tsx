@@ -1,5 +1,5 @@
 import ToDoListHeader from "../todolist-header.component/tosolistheader";
-import { Button, ButtonGroup } from "react-bootstrap";
+import { ButtonGroup } from "react-bootstrap";
 import {
   Trash,
   PencilFill,
@@ -11,11 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addtask } from "../redux/taskdata.mjs";
 import "./todolist.scss";
+import Loader from "../loder/loader";
 
 const ToDoList: React.FC = () => {
   const [taskinfo, setTaskInfo] = useState([]);
   const [refreshKey, setRefreshKey] = useState(true);
   const [isClicked, setIsClicked] = useState(true);
+  const [isloder, setIsLoder] = useState<boolean>(false);
 
   const navigate = useNavigate();
   const dispach = useDispatch();
@@ -36,12 +38,15 @@ const ToDoList: React.FC = () => {
     };
 
     const fetching = () => {
+      setIsLoder(true);
       fetch("http://localhost:5000/user/tasklist", Postdata)
         .then((response) => response.json())
         .then((data) => {
+          console.log(data.taskdata[0].task);
           setTaskInfo(data.taskdata[0].task);
           dispach(addtask(data.taskdata[0].task));
           setRefreshKey(false);
+          setIsLoder(false);
         })
         .catch((error) => console.log(error));
     };
@@ -69,7 +74,6 @@ const ToDoList: React.FC = () => {
       fetch("http://localhost:5000/user/tasklist/deletetask", Postdata)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setRefreshKey(true);
         })
         .catch((error) => console.log(error));
@@ -114,8 +118,10 @@ const ToDoList: React.FC = () => {
   const AddTask = () => {
     navigate("/addtask");
   };
+
   return (
     <div className="main-todolist-container">
+      {isloder ? <Loader /> : ""}
       <div>
         <ToDoListHeader />
       </div>
@@ -152,14 +158,28 @@ const ToDoList: React.FC = () => {
                   </td>
                   <td>
                     <ButtonGroup>
-                      <Button onClick={() => editTask(index)}>
+                      <button
+                        className="btn btn-outline-success"
+                        onClick={() => editTask(index)}
+                      >
                         <PencilFill
-                          style={{ height: "25px", width: "25px" }}
+                          style={{
+                            height: "25px",
+                            width: "25px",
+                          }}
                         ></PencilFill>
-                      </Button>
-                      <Button onClick={() => deleteItem(index)}>
-                        <Trash style={{ height: "25px", width: "25px" }} />
-                      </Button>
+                      </button>
+                      <button
+                        className="btn btn-outline-danger"
+                        onClick={() => deleteItem(index)}
+                      >
+                        <Trash
+                          style={{
+                            height: "25px",
+                            width: "25px",
+                          }}
+                        />
+                      </button>
                     </ButtonGroup>
                   </td>
                 </tr>
@@ -168,9 +188,9 @@ const ToDoList: React.FC = () => {
           </tbody>
         </table>
       </div>
-      <div className="addtask-con">
-        <button onClick={AddTask}>
-          <Plus style={{ height: "25px", width: "25px" }} />
+      <div className="addtask-con" onClick={AddTask}>
+        <button className="btn btn-outline-success">
+          <Plus />
           New Task
         </button>
       </div>

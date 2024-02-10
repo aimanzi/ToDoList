@@ -20,24 +20,10 @@
   border-radius: 360px;
 }
 
-.links-container .list-item {
-  list-style: none;
-  text-align: center;
-  display: flex;
-  margin-right: 30px;
-}
-
-.list-item .linkto {
-  text-align: center;
-  padding: 10px;
-  font-size: larger;
-}
-
-.linkto .link {
-  text-decoration: none;
+.header-main-container .btn-group .btn-outline-danger {
   color: black;
-}
-
-.link:hover {
-  text-decoration: underline solid blue 2px;
+  font-weight: 600;
+  font-size: large;
+  border: none;
+  padding: 10px;
 }

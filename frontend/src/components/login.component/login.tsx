@@ -95,19 +95,13 @@ const LogIn: React.FC = () => {
           />
         </div>
       </div>
-      <div className="login-buttons-container">
-        <div className="button-con">
-          <button type="submit" className="button" onClick={LoginTo}>
-            login
-          </button>
-        </div>
-        <div className="button-con">
-          <button type="button" className="button" onClick={BackTo}>
-            {/* <Link to={"/"} className="linkto"> */}
-            Back
-            {/* </Link> */}
-          </button>
-        </div>
+      <div className="btn-group">
+        <button type="submit" className="btn btn-info" onClick={LoginTo}>
+          login
+        </button>
+        <button type="button" className="btn btn-info" onClick={BackTo}>
+          Back
+        </button>
       </div>
       <div>
         <h5>{loginerror}</h5>
