@@ -26,23 +26,14 @@
   height: 50px;
 }
 
-tbody .checkbox {
+.checkbox {
   width: 20px;
   height: 20px;
-}
-
-tbody .checkbox-input {
-  width: 20px;
-  height: 20px;
-}
-
-.checkbox.clicked {
-  width: 30px;
-  height: 30px;
 }
 
 .done {
-  color: green;
+  color: greenyellow;
+  font-weight: bold;
   text-decoration: line-through;
 }
 

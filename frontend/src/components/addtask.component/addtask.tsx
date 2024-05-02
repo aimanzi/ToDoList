@@ -102,8 +102,8 @@ const AddTask: React.FC = () => {
           Back
         </button>
       </div>
-      <div style={{ marginTop: "15px" }}>
-        <strong>{msg}</strong>
+      <div className="msg-container">
+        <label>{msg}</label>
       </div>
     </div>
   );

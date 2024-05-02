@@ -1,4 +1,4 @@
-.header-main-container {
+.todolist-header-container {
   padding: 10px;
   font-weight: bolder;
   font-style: italic;
@@ -11,19 +11,17 @@
   );
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-.header-main-container img {
+.todolist-header-container img {
   width: 100px;
   height: 80px;
   border-radius: 360px;
 }
 
-.header-main-container .btn-group .btn-outline-danger {
-  color: black;
-  font-weight: 600;
-  font-size: large;
-  border: none;
+.todolist-header-container .btn-group-lg .btn-outline-danger {
   padding: 10px;
+  font-weight: bold;
+  border: solid red;
 }

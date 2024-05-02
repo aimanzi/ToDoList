@@ -1,11 +1,6 @@
 import ToDoListHeader from "../todolist-header.component/tosolistheader";
 import { ButtonGroup } from "react-bootstrap";
-import {
-  Trash,
-  PencilFill,
-  Plus,
-  Calendar2EventFill,
-} from "react-bootstrap-icons";
+import { Trash, PencilFill, Calendar2EventFill } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -15,9 +10,11 @@ import Loader from "../loder/loader";
 
 const ToDoList: React.FC = () => {
   const [taskinfo, setTaskInfo] = useState([]);
-  const [refreshKey, setRefreshKey] = useState(true);
-  const [isClicked, setIsClicked] = useState(true);
+  const [refreshKey, setRefreshKey] = useState<boolean>(true);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isloder, setIsLoder] = useState<boolean>(false);
+
+  console.log(isClicked);
 
   const navigate = useNavigate();
   const dispach = useDispatch();
@@ -42,7 +39,6 @@ const ToDoList: React.FC = () => {
       fetch("http://localhost:5000/user/tasklist", Postdata)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.taskdata[0].task);
           setTaskInfo(data.taskdata[0].task);
           dispach(addtask(data.taskdata[0].task));
           setRefreshKey(false);
@@ -82,16 +78,11 @@ const ToDoList: React.FC = () => {
   };
 
   const ClickCheck = (index: number) => {
-    console.log(isClicked);
-    const id = "task" + index;
-    if (isClicked === true) {
-      AddClass("checkbox", "clicked", id);
+    const id = `task${index}`;
+    if (isClicked !== true) {
       AddClass("task-td", "done", id);
-      setIsClicked(!isClicked);
     } else {
-      RemoveClass("checkbox", "clicked", id);
       RemoveClass("task-td", "done", id);
-      setIsClicked(!isClicked);
     }
   };
 
@@ -100,6 +91,7 @@ const ToDoList: React.FC = () => {
     const taskItem = selectItem?.querySelector("." + classname);
     if (taskItem) {
       taskItem.classList.add(additionalclass);
+      setIsClicked(!isClicked);
     }
   };
 
@@ -112,6 +104,7 @@ const ToDoList: React.FC = () => {
     const taskItem = selectItem?.querySelector("." + classname);
     if (taskItem) {
       taskItem.classList.remove(additionalclass);
+      setIsClicked(!isClicked);
     }
   };
 
@@ -145,15 +138,17 @@ const ToDoList: React.FC = () => {
           <tbody>
             {taskinfo.map((ti: any, index: any) => {
               return (
-                <tr key={index} id={`task${index}`} className="tr-con">
+                <tr key={index} className="tr-con" id={`task${index}`}>
                   <td className="task-td">{ti.taskDescription}</td>
                   <td>{ti.startDate}</td>
                   <td>{ti.endDate}</td>
-                  <td>
+                  <td id={`task${index}`}>
                     <input
                       type="checkbox"
-                      onClick={() => ClickCheck(index)}
-                      className="checkbox"
+                      onClick={() => {
+                        ClickCheck(index);
+                      }}
+                      className={"checkbox"}
                     />
                   </td>
                   <td>
@@ -188,10 +183,9 @@ const ToDoList: React.FC = () => {
           </tbody>
         </table>
       </div>
-      <div className="addtask-con" onClick={AddTask}>
-        <button className="btn btn-outline-success">
-          <Plus />
-          New Task
+      <div className="addtask-con">
+        <button className="btn btn-outline-success" onClick={AddTask}>
+          + New Task
         </button>
       </div>
     </div>

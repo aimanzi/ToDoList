@@ -30,12 +30,10 @@ const MainPage: React.FC = () => {
   return (
     <div className="mainpage-main-container">
       <Header />
-      <div>
-        <div className="img-container">
-          <img alt="bgimg" src={backgroundImg} className="desktop-image"></img>
-        </div>
-        <div className="pageDisplay">{page}</div>
+      <div className="img-container">
+        <img alt="bgimg" src={backgroundImg} className="desktop-image"></img>
       </div>
+      <div className="pageDisplay">{page}</div>
       <Footer />
     </div>
   );
